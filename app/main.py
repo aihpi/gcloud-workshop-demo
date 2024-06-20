@@ -27,6 +27,10 @@ async def predict(
     # Read the uploaded image
     image = Image.open(io.BytesIO(await input_image.read()))
 
+    # Convert RGBA images to RGB
+    if image.mode == 'RGBA':
+        image = image.convert('RGB')
+
     # Apply the transformations
     image = transforms(image).unsqueeze(0)  # Add batch dimension
 
