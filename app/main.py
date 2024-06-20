@@ -27,7 +27,7 @@ async def predict(
     # Read the uploaded image
     image = Image.open(io.BytesIO(await input_image.read()))
 
-    # Convert RGBA images to RGB
+    # Convert RGBA image to RGB image
     if image.mode == 'RGBA':
         image = image.convert('RGB')
 
